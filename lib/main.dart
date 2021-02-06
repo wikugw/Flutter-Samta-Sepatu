@@ -24,7 +24,14 @@ class MyApp extends StatelessWidget {
                           child: Text('email'),
                         ),
                         Container(
-                          child: Text('email'),
+                          width: 100,
+                          child: Expanded(
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Type your email address'
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
