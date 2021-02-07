@@ -1,3 +1,9 @@
+// ----------------------------------------------------------- //
+// references                                                  //
+// - grid view count                                           //
+// https://flutter.dev/docs/cookbook/lists/horizontal-list     //
+// ----------------------------------------------------------- //
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,177 +22,37 @@ class MyApp extends StatelessWidget {
       },
       child: MaterialApp(
         home: Scaffold(
-          body: SafeArea(
-            child: Center(
-              child: Column(
-                children: [
-                  // --------------------------------------------- //
-                  // Judul container                               //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 50, 0, 70),
-                    child: Text('Samta Sepatu')
-                  ),
-                  // --------------------------------------------- //
-                  // nama input container                         //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Center(
-                            child: Text('nama')
-                          ),
-                        ),
-                        Expanded(
-                          flex: 7,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 30),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.black),
-                              ),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Type your name'
-                                ),
+          body: ListView(
+            children: [
+              GridView.count(
+                crossAxisCount: 2,
+                shrinkWrap: true,
+                childAspectRatio: (3/5),
+                physics: NeverScrollableScrollPhysics(),
+                children: List.generate(9, (index) {
+                  return Card(
+                    child: InkWell(
+                      splashColor: Colors.blue.withAlpha(30),
+                      onTap: () {
+                        print('Card tapped.');
+                      },
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              child: Image.network(
+                                'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//87/MTA-7172331/whale_whale_fins_sepatu_katak_diving_snorkeling_full09_ft9phsah.jpg'
                               ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  // --------------------------------------------- //
-                  // email input container                         //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Center(
-                            child: Text('email')
-                          ),
-                        ),
-                        Expanded(
-                          flex: 7,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 30),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.black),
-                              ),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Type your email address'
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // --------------------------------------------- //
-                  // password input container                      //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Center(
-                            child: Text('password')
-                          ),
-                        ),
-                        Expanded(
-                          flex: 7,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 30),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.black),
-                              ),
-                              child: TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Type your password'
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              'confirm password',
-                              textAlign: TextAlign.center,
-                            )
-                          ),
-                        ),
-                        Expanded(
-                          flex: 7,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 30),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.black),
-                              ),
-                              child: TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Retype your password'
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // --------------------------------------------- //
-                  // login button container                        //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Center(
-                      child: RaisedButton(
-                        onPressed: () {},
-                        child: Text('register'),
                       ),
                     ),
-                  ),
-                ],
-              )
-            ),
+                  );
+                }),
+              ),
+            ]
           ),
         )
       ),
