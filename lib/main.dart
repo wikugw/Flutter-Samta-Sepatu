@@ -1,9 +1,3 @@
-// ----------------------------------------------------------- //
-// references                                                  //
-// - grid view count                                           //
-// https://flutter.dev/docs/cookbook/lists/horizontal-list     //
-// ----------------------------------------------------------- //
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,95 +17,132 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         home: Scaffold(
           body: SafeArea(
-            child: Stack(
+            child: Column(
               children: [
-                ListView(
-                children: [
-                  Container(
-                    margin: EdgeInsetsDirectional.only(bottom: 20),
-                    decoration: BoxDecoration(
-                      border: Border(bottom: BorderSide(color: Colors.black))
-                    ),
-                    child: Row(
+                // --------------------------------------------- //
+                // tombol kembali                                //
+                // --------------------------------------------- //
+                Container(
+                  padding: EdgeInsets.fromLTRB(0, 40, 290, 0),
+                  child: RaisedButton(
+                    onPressed: () {},
+                    child: Text( 'kembali' ),
+                  ),
+                ),
+                // --------------------------------------------- //
+                // gambar dan penjelasan                         //
+                // --------------------------------------------- //
+                Container(
+                  padding: EdgeInsets.fromLTRB(10, 10, 10, 40),
+                  child: Card(
+                    child: Column(
                       children: [
-                        Expanded(
-                          flex: 4,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border(right: BorderSide(color: Colors.black))
-                            ),
-                            child: Align(
-                              alignment: Alignment.centerRight,
-                              child: IconButton(
-                                icon: Icon(Icons.arrow_drop_down),
-                                color: Colors.grey,
-                                onPressed: () {},
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // --------------------------------------------- //
+                              // gambar                                        //
+                              // --------------------------------------------- //
+                              Expanded(
+                                flex: 6,
+                                child: Container(
+                                  height: 200,
+                                  decoration : BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.fitWidth,
+                                      alignment: FractionalOffset.topCenter,
+                                      image: NetworkImage(
+                                        'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//87/MTA-7172331/whale_whale_fins_sepatu_katak_diving_snorkeling_full09_ft9phsah.jpg'
+                                      ),
+                                    ),
+                                  ),
+                                ) 
+                              ),
+                              // --------------------------------------------- //
+                              // penjelasan                                    //
+                              // --------------------------------------------- //
+                              Expanded(
+                                flex: 4,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.symmetric( vertical: 5 ),
+                                      child: Text('nama'),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.symmetric( vertical: 5 ),
+                                      child: Text('Rp. 150.000'),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.symmetric( vertical: 5 ),
+                                      child: Text(
+                                        'Ini adalah sepatu katak super cepattt bisa dipake di air di pohon',
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ],
+                                ), 
+                              )
+                            ], 
+                          ),
+                        ),
+                        // --------------------------------------------- //
+                        // text field jumlah pesan                       //
+                        // --------------------------------------------- //
+                        Container(
+                          margin: EdgeInsets.only(bottom: 10),
+                          child: Row(
+                          children: [
+                            Expanded(
+                              flex: 5,
+                              child: Container(
+                                child: Text(
+                                  'jumlah pesan',
+                                  textAlign: TextAlign.center,
+                                )
                               ),
                             ),
-                          ),
+                            Expanded(
+                              flex: 5,
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: Colors.black),
+                                  ),
+                                  child: TextFormField (
+                                    initialValue: "1",
+                                    textAlign: TextAlign.center,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: 'Retype your password'
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: IconButton(
-                            icon: Icon(Icons.shopping_cart),
-                            color: Colors.grey,
-                            onPressed: () {},
-                          ),
                         ),
+                        // --------------------------------------------- //
+                        // tombol masukkan keranjang                     //
+                        // --------------------------------------------- //
+                        Container(
+                          margin: EdgeInsets.only(bottom: 10),
+                          padding: EdgeInsets.only(left: 180),
+                          child: RaisedButton(
+                            onPressed: (){},
+                            child: Text('Masukkan keranjang'),
+                          ),
+                        )
                       ],
                     ),
                   ),
-                  GridView.count(
-                    crossAxisCount: 2,
-                    shrinkWrap: true,
-                    childAspectRatio: (3/5),
-                    physics: NeverScrollableScrollPhysics(),
-                    children: List.generate(9, (index) {
-                      return Card(
-                        child: InkWell(
-                          splashColor: Colors.blue.withAlpha(30),
-                          onTap: () {
-                            print('Card tapped.');
-                          },
-                          child: Container(
-                            child: Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  child: Image.network(
-                                    'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//87/MTA-7172331/whale_whale_fins_sepatu_katak_diving_snorkeling_full09_ft9phsah.jpg'
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric( vertical: 5 ),
-                                  child: Text('nama'),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric( vertical: 5 ),
-                                  child: Text('Rp. 150.000'),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric( vertical: 5 ),
-                                  child: Text(
-                                    'Ini adalah sepatu katak super cepattt bisa dipake di air di pohon',
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                Container(
-                                  child: RaisedButton(
-                                    onPressed: (){},
-                                    child: Text('Pesan'),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
-                ]
-              ),
+                )
               ],
             ),
           ),
