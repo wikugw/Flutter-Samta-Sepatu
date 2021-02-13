@@ -1,135 +1,95 @@
-import 'package:flutter/material.dart';
+part of 'pages.dart';
 
-void main() {
-  runApp(MyApp());
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class MyApp extends StatelessWidget {
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      // --------------------------------------------- //
-      // dismiss keyboad on tap outside textbox        //
-      // --------------------------------------------- //
-      onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
-      },
-      child: MaterialApp(
-        home: Scaffold(
-          body: SafeArea(
-            child: Center(
-              child: Column(
-                children: [
-                  // --------------------------------------------- //
-                  // Judul container                               //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 50, 0, 70),
-                    child: Text('Samta Sepatu')
-                  ),
-                  // --------------------------------------------- //
-                  // email input container                         //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+    return BlocBuilder<UserloginBloc, UserloginState>(
+      builder: (context, state) {
+        return BlocListener<UserloginBloc, UserloginState>(
+          listener: (context, state) {
+            // IF state is user loaded, go to next page
+            if (state is UserLoaded) {
+              Navigator.pushReplacementNamed(context, UnknownPageRoute);
+            } else if (state is UserError) {
+              // If state is user error, show error message
+              flushMessage(state.message.toString(), context);
+            }
+          },
+          child: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).requestFocus(new FocusNode());
+            },
+            child: Scaffold(
+              body: Center(
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: SingleChildScrollView(
+                    child: Column(
                       children: [
-                        Expanded(
-                          flex: 3,
-                          child: Center(
-                            child: Text('email')
-                          ),
+                        Text("Samta Sepatu", style: blackFonts,),
+                        SizedBox(
+                          height: 50,
                         ),
-                        Expanded(
-                          flex: 7,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 30),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.black),
-                              ),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Type your email address'
-                                ),
-                              ),
-                            ),
-                          ),
+                        TextFormField(
+                          controller: emailController,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              labelText: "Email",
+                              hintText: "Email"),
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          controller: passwordController,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              labelText: "Password",
+                              hintText: "Password"),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        // Call shared button widget
+                        state is UserLoading
+                            ? SpinKitFadingCircle(
+                                color: mainColor,
+                              )
+                            : ButtonWidget(
+                                title: "Login",
+                                color: mainColor,
+                                onClickState: () {
+                                  context.read<UserloginBloc>().add(LoginUser(
+                                      emailController.text,
+                                      passwordController.text));
+                                }),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Text("Register", style: blackFonts),
+                        )
                       ],
                     ),
                   ),
-                  // --------------------------------------------- //
-                  // password input container                      //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Center(
-                            child: Text('password')
-                          ),
-                        ),
-                        Expanded(
-                          flex: 7,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 30),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.black),
-                              ),
-                              child: TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Type your password'
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // --------------------------------------------- //
-                  // login button container                        //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Center(
-                      child: RaisedButton(
-                        onPressed: () {},
-                        child: Text('login'),
-                      ),
-                    ),
-                  ),
-                  // --------------------------------------------- //
-                  // register button container                     //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    child: Center(
-                      child: RaisedButton(
-                        onPressed: () {},
-                        child: Text('register'),
-                      ),
-                    ),
-                  ),
-                ],
-              )
+                ),
+              ),
             ),
           ),
-        )
-      ),
+        );
+      },
     );
   }
 }
