@@ -8,3 +8,11 @@ void flushMessage(String message, context) {
     flushbarPosition: FlushbarPosition.BOTTOM,
   )..show(context);
 }
+
+extension IntParsing on int {
+  String toIdr() {
+    return NumberFormat.currency(
+            locale: 'id_ID', symbol: 'IDR ', decimalDigits: 0)
+        .format(this);
+  }
+}

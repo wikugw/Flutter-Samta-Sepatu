@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
           listener: (context, state) {
             // IF state is user loaded, go to next page
             if (state is UserLoaded) {
-              Navigator.pushReplacementNamed(context, UnknownPageRoute);
+              Navigator.pushReplacementNamed(context, ProductListRoute);
             } else if (state is UserError) {
               // If state is user error, show error message
               flushMessage(state.message.toString(), context);
@@ -78,7 +78,9 @@ class _LoginPageState extends State<LoginPage> {
                           height: 10,
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, RegisterRoute);
+                          },
                           child: Text("Register", style: blackFonts),
                         )
                       ],

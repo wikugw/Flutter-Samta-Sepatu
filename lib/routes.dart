@@ -10,9 +10,12 @@ Route<dynamic> generateRoute(RouteSettings setting){
     case LoginRoute:
       return MaterialPageRoute(builder: (context)=> LoginPage());
       break;
-    // case RegisterRoute:
-    //   return MaterialPageRoute(builder: (context)=> RegisterPage());
-    //   break;
+    case ProductListRoute:
+      return MaterialPageRoute(builder: (context)=> ProductListPage());
+      break;
+    case RegisterRoute:
+      return MaterialPageRoute(builder: (context)=> RegisterPage());
+      break;
     default:
       return MaterialPageRoute(builder: (context)=> UnknownPage());
   }
