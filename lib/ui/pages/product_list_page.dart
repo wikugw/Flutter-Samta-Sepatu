@@ -10,9 +10,7 @@ class _ProductListPageState extends State<ProductListPage> {
   
   @override
   Widget build(BuildContext context) {
-
-  double height = MediaQuery.of(context).size.height;
-  var appBarHeight = height * 0.07;
+  var appBarHeight = AppBar().preferredSize.height;
 
     return Scaffold(
       body: SafeArea(

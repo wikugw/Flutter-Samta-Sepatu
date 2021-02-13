@@ -9,8 +9,12 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  bool isPasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+
     return BlocBuilder<UserloginBloc, UserloginState>(
       builder: (context, state) {
         return BlocListener<UserloginBloc, UserloginState>(
@@ -28,19 +32,45 @@ class _LoginPageState extends State<LoginPage> {
               FocusScope.of(context).requestFocus(new FocusNode());
             },
             child: Scaffold(
-              body: Center(
+              body: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 40),
                   child: SingleChildScrollView(
                     child: Column(
+                      mainAxisSize: MainAxisSize.max,
                       children: [
-                        Text("Samta Sepatu", style: blackFonts,),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Welcome \n Back!",
+                                style: blackFonts.copyWith(
+                                    fontSize: 26, fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Cari Sepatu favoritmu gak pake ribet!",
+                                style: blackFonts.copyWith(fontSize: 16),
+                              ),
+                              Text(
+                                "Yuk login sekarang ....",
+                                style: blackFonts.copyWith(fontSize: 16),
+                              )
+                            ],
+                          ),
+                        ),
                         SizedBox(
-                          height: 50,
+                          height: 40,
                         ),
                         TextFormField(
                           controller: emailController,
                           decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.mail),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
                               labelText: "Email",
@@ -51,15 +81,25 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         TextFormField(
                           controller: passwordController,
-                          obscureText: true,
+                          obscureText: !isPasswordVisible,
                           decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.lock),
+                              suffixIcon: IconButton(
+                                  icon: Icon(isPasswordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off),
+                                  onPressed: () {
+                                    setState(() {
+                                      isPasswordVisible = !isPasswordVisible;
+                                    });
+                                  }),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
                               labelText: "Password",
                               hintText: "Password"),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 30,
                         ),
                         // Call shared button widget
                         state is UserLoading
@@ -82,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.pushNamed(context, RegisterRoute);
                           },
                           child: Text("Register", style: blackFonts),
-                        )
+                        ),
                       ],
                     ),
                   ),
