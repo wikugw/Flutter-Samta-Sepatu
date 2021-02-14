@@ -32,7 +32,7 @@ class _ProductListPageState extends State<ProductListPage> {
                             "Ini Kaki kodok, biasa digunakan oleh penyelam profesional",
                         price: 150000,
                         onCLickState: () {
-                          // Go To detail product page
+                          Navigator.pushNamed(context, ProductDetailRoute);
                         },
                       );
                     }),

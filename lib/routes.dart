@@ -13,6 +13,15 @@ Route<dynamic> generateRoute(RouteSettings setting){
     case ProductListRoute:
       return MaterialPageRoute(builder: (context)=> ProductListPage());
       break;
+
+    // ------------------------------------------------------------------
+    // product detail route
+    // ------------------------------------------------------------------
+    case ProductDetailRoute:
+      return MaterialPageRoute(builder: (context)=> ProductDetailPage());
+      break;
+    // ------------------------------------------------------------------
+
     case RegisterRoute:
       return MaterialPageRoute(builder: (context)=> RegisterPage());
       break;
