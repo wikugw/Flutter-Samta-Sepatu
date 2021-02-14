@@ -1,9 +1,3 @@
-// ----------------------------------------------------------- //
-// references                                                  //
-// - grid view count                                           //
-// https://flutter.dev/docs/cookbook/lists/horizontal-list     //
-// ----------------------------------------------------------- //
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:samta_sepatu/bloc/userlogin_bloc.dart';
