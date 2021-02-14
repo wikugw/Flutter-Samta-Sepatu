@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
+part of 'pages.dart';
 
-void main() {
-  runApp(MyApp());
+class RegisterPage extends StatefulWidget {
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class MyApp extends StatelessWidget {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -14,184 +15,169 @@ class MyApp extends StatelessWidget {
       onTap: () {
         FocusScope.of(context).requestFocus(new FocusNode());
       },
-      child: MaterialApp(
-        home: Scaffold(
-          body: SafeArea(
-            child: Center(
+      child: Scaffold(
+        body: SafeArea(
+          child: Center(
               child: Column(
-                children: [
-                  // --------------------------------------------- //
-                  // Judul container                               //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 50, 0, 70),
-                    child: Text('Samta Sepatu')
-                  ),
-                  // --------------------------------------------- //
-                  // nama input container                         //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Center(
-                            child: Text('nama')
-                          ),
-                        ),
-                        Expanded(
-                          flex: 7,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 30),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.black),
-                              ),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Type your name'
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+            children: [
+              // --------------------------------------------- //
+              // Judul container                               //
+              // --------------------------------------------- //
+              Container(
+                  margin: EdgeInsets.fromLTRB(0, 50, 0, 70),
+                  child: Text('Samta Sepatu')),
+              // --------------------------------------------- //
+              // nama input container                         //
+              // --------------------------------------------- //
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Center(child: Text('nama')),
                     ),
-                  ),
-                  // --------------------------------------------- //
-                  // email input container                         //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Center(
-                            child: Text('email')
+                    Expanded(
+                      flex: 7,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 30),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Type your name'),
                           ),
                         ),
-                        Expanded(
-                          flex: 7,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 30),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.black),
-                              ),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Type your email address'
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // --------------------------------------------- //
-                  // password input container                      //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Center(
-                            child: Text('password')
-                          ),
-                        ),
-                        Expanded(
-                          flex: 7,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 30),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.black),
-                              ),
-                              child: TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Type your password'
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                   // --------------------------------------------- //
-                  // password confirm input container              //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              'confirm password',
-                              textAlign: TextAlign.center,
-                            )
-                          ),
-                        ),
-                        Expanded(
-                          flex: 7,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 30),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.black),
-                              ),
-                              child: TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Retype your password'
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // --------------------------------------------- //
-                  // register button container                     //
-                  // --------------------------------------------- //
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Center(
-                      child: RaisedButton(
-                        onPressed: () {},
-                        child: Text('register'),
                       ),
                     ),
+                  ],
+                ),
+              ),
+              // --------------------------------------------- //
+              // email input container                         //
+              // --------------------------------------------- //
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Center(child: Text('email')),
+                    ),
+                    Expanded(
+                      flex: 7,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 30),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Type your email address'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // --------------------------------------------- //
+              // password input container                      //
+              // --------------------------------------------- //
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Center(child: Text('password')),
+                    ),
+                    Expanded(
+                      flex: 7,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 30),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child: TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Type your password'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // --------------------------------------------- //
+              // password confirm input container              //
+              // --------------------------------------------- //
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                          child: Text(
+                        'confirm password',
+                        textAlign: TextAlign.center,
+                      )),
+                    ),
+                    Expanded(
+                      flex: 7,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 30),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child: TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Retype your password'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // --------------------------------------------- //
+              // register button container                     //
+              // --------------------------------------------- //
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                child: Center(
+                  child: RaisedButton(
+                    onPressed: () {},
+                    child: Text('register'),
                   ),
-                ],
-              )
-            ),
-          ),
-        )
+                ),
+              ),
+            ],
+          )),
+        ),
       ),
     );
   }
