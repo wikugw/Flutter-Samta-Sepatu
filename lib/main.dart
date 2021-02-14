@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(primaryColor: mainColor, accentColor: accentColor),
           debugShowCheckedModeBanner: false,
           onGenerateRoute: router.generateRoute,
-          initialRoute: LoginRoute,
+          initialRoute: CheckoutListRoute,
         ));
   }
 }

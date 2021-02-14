@@ -1,10 +1,14 @@
-import 'package:flutter/material.dart';
+part of 'pages.dart';
 
-void main() {
-  runApp(MyApp());
+class ProductDetailPage extends StatefulWidget {
+  @override
+  _ProductDetailPageState createState() => _ProductDetailPageState();
 }
 
-class MyApp extends StatelessWidget {
+class _ProductDetailPageState extends State<ProductDetailPage> {
+
+  int orderCount = 1;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -115,7 +119,7 @@ class MyApp extends StatelessWidget {
                                     border: Border.all(color: Colors.black),
                                   ),
                                   child: TextFormField (
-                                    initialValue: "1",
+                                    initialValue: orderCount.toString(),
                                     textAlign: TextAlign.center,
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
