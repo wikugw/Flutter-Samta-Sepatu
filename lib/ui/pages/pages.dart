@@ -14,5 +14,6 @@ part 'product_list_page.dart';
 part 'product_detail_page.dart';
 // -----------------------------------
 part 'checkout_list_page.dart';
+part 'checkout_detail_page.dart';
 // -----------------------------------
 part 'unknown_page.dart';

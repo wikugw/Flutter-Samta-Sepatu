@@ -8,5 +8,6 @@ const ProductListRoute = 'product_list';
 const ProductDetailRoute = 'product_detail';
 // ------------------------------------------------------------------
 const CheckoutListRoute = 'checkout_list';
+const CheckoutDetailRoute = 'checkout_detail';
 // ------------------------------------------------------------------
 const UnknownPageRoute = 'unknown_page';

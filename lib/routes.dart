@@ -36,6 +36,9 @@ Route<dynamic> generateRoute(RouteSettings setting){
     case CheckoutListRoute:
       return MaterialPageRoute(builder: (context)=> CheckoutListPage());
       break;
+     case CheckoutDetailRoute:
+      return MaterialPageRoute(builder: (context)=> CheckoutDetailPage());
+      break;
     // ------------------------------------------------------------------
 
     default:
