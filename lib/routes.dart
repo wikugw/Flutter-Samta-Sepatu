@@ -41,6 +41,14 @@ Route<dynamic> generateRoute(RouteSettings setting){
       break;
     // ------------------------------------------------------------------
 
+    // ------------------------------------------------------------------
+    // transaction route
+    // ------------------------------------------------------------------
+    case TransactionListRoute:
+      return MaterialPageRoute(builder: (context)=> TransactionListPage());
+      break;
+    // ------------------------------------------------------------------
+
     default:
       return MaterialPageRoute(builder: (context)=> UnknownPage());
   }

@@ -10,4 +10,6 @@ const ProductDetailRoute = 'product_detail';
 const CheckoutListRoute = 'checkout_list';
 const CheckoutDetailRoute = 'checkout_detail';
 // ------------------------------------------------------------------
+const TransactionListRoute = 'transaction_list';
+// ------------------------------------------------------------------
 const UnknownPageRoute = 'unknown_page';
