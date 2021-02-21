@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
           listener: (context, state) {
             // IF state is user loaded, go to next page
             if (state is UserLoaded) {
-              Navigator.pushReplacementNamed(context, ProductListRoute);
+              Navigator.pushNamed(context, ProductListRoute);
             } else if (state is UserError) {
               // If state is user error, show error message
               flushMessage(state.message.toString(), context);

@@ -6,6 +6,15 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController cName = new TextEditingController();
+  TextEditingController cEmail = new TextEditingController();
+  TextEditingController cPassword = new TextEditingController();
+  TextEditingController cConfirmPassword = new TextEditingController();
+
+  bool isChecked = false;
+  bool isPasswordVisible = false;
+  bool isConfirmPasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,166 +26,134 @@ class _RegisterPageState extends State<RegisterPage> {
       },
       child: Scaffold(
         body: SafeArea(
-          child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(default_margin),
               child: Column(
-            children: [
-              // --------------------------------------------- //
-              // Judul container                               //
-              // --------------------------------------------- //
-              Container(
-                  margin: EdgeInsets.fromLTRB(0, 50, 0, 70),
-                  child: Text('Samta Sepatu')),
-              // --------------------------------------------- //
-              // nama input container                         //
-              // --------------------------------------------- //
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Center(child: Text('nama')),
-                    ),
-                    Expanded(
-                      flex: 7,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.black),
-                          ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'Type your name'),
-                          ),
-                        ),
+                children: [
+                  Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            }, child: Icon(Icons.arrow_back)),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              // --------------------------------------------- //
-              // email input container                         //
-              // --------------------------------------------- //
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Center(child: Text('email')),
-                    ),
-                    Expanded(
-                      flex: 7,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.black),
-                          ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'Type your email address'),
-                          ),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          "Create Account",
+                          style: blackFonts.copyWith(
+                              fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // --------------------------------------------- //
-              // password input container                      //
-              // --------------------------------------------- //
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Center(child: Text('password')),
-                    ),
-                    Expanded(
-                      flex: 7,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.black),
-                          ),
-                          child: TextField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'Type your password'),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // --------------------------------------------- //
-              // password confirm input container              //
-              // --------------------------------------------- //
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                          child: Text(
-                        'confirm password',
-                        textAlign: TextAlign.center,
-                      )),
-                    ),
-                    Expanded(
-                      flex: 7,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.black),
-                          ),
-                          child: TextField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'Retype your password'),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // --------------------------------------------- //
-              // register button container                     //
-              // --------------------------------------------- //
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
-                child: Center(
-                  child: RaisedButton(
-                    onPressed: () {},
-                    child: Text('register'),
+                      )
+                    ],
                   ),
-                ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    controller: cName,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        labelText: "Full Name",
+                        hintText: "Full Name"),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: cEmail,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        labelText: "Email",
+                        hintText: "Email"),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: cPassword,
+                    obscureText: !isPasswordVisible,
+                    decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        icon: Icon(isPasswordVisible ? Icons.visibility : Icons.visibility_off),
+                        onPressed: (){
+                          setState(() {
+                            isPasswordVisible = !isPasswordVisible;
+                          });
+                        }
+                      ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        labelText: "Password",
+                        hintText: "Password"),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: cConfirmPassword,
+                    obscureText: !isConfirmPasswordVisible,
+                    decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        icon: Icon(isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off),
+                        onPressed: (){
+                          setState(() {
+                            isConfirmPasswordVisible = !isConfirmPasswordVisible;
+                          });
+                        }
+                      ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        labelText: "Confirm Password",
+                        hintText: "Confirm Password"),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: isChecked,
+                        onChanged: (val) {
+                          setState(() {
+                            isChecked = val;
+                          });
+                        },
+                        checkColor: Colors.white,
+                        activeColor: mainColor,
+                      ),
+                      Expanded(
+                          child: Text(
+                        "Dengan ini anda menyetejui semua syarat dan ketentuan yang dimiliki oleh Samta Sepatu",
+                        style: blackFonts,
+                        overflow: TextOverflow.clip,
+                      ))
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ButtonWidget(
+                    color: mainColor,
+                    title: "Register",
+                    onClickState: () {},
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: Text("Go to login page"),
+                  ),
+                ],
               ),
-            ],
-          )),
+            ),
+          ),
         ),
       ),
     );

@@ -18,8 +18,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       onTap: () {
         FocusScope.of(context).requestFocus(new FocusNode());
       },
-      child: MaterialApp(
-        home: Scaffold(
+      child: Scaffold(
           body: SafeArea(
             child: Column(
               children: [
@@ -139,7 +138,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           margin: EdgeInsets.only(bottom: 10),
                           padding: EdgeInsets.only(left: 180),
                           child: RaisedButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.pushNamed(context, CheckoutListRoute);
+                            },
                             child: Text('Masukkan keranjang'),
                           ),
                         )
@@ -150,8 +151,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               ],
             ),
           ),
-        )
-      ),
+        ),
     );
   }
 }

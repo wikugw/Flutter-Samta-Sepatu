@@ -686,7 +686,9 @@ class _CheckoutListPageState extends State<CheckoutListPage> {
                         child: Container(
                           padding: EdgeInsets.only(right: 5),
                           child: RaisedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, CheckoutDetailRoute);
+                            },
                             child: Text(
                               'Check Out'
                             ),

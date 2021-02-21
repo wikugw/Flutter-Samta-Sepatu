@@ -1,0 +1,1 @@
+part 'shoes_json.dart';
